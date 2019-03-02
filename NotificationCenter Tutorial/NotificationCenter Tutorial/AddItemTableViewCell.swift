@@ -12,7 +12,7 @@ protocol AddCellOwner {
     func addItem(_ item:String)
 }
 
-class ListItemTableViewCell: UITableViewCell {
+class AddItemTableViewCell: UITableViewCell {
     var cellField: UITextField?
     var addButton: UIButton?
     var owner: AddCellOwner?
@@ -20,7 +20,6 @@ class ListItemTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         if cellField == nil {
             cellField = UITextField(frame: CGRect(x: 10, y: 5, width: self.contentView.frame.width - 50, height: self.contentView.frame.height - 10))
             cellField!.borderStyle = .bezel
@@ -33,6 +32,8 @@ class ListItemTableViewCell: UITableViewCell {
             addButton!.addTarget(self, action: #selector(addItem), for: .touchUpInside)
             self.contentView.addSubview(addButton!)
         }
+        
+        self.selectionStyle = .none
     }
     
     @objc func addItem() {

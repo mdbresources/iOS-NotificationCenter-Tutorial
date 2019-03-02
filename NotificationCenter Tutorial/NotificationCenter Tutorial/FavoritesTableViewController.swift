@@ -8,33 +8,33 @@
 
 import UIKit
 
-protocol SettingsVCDelegate {
+protocol PeopleVCDelegate {
     func itemChecked(_ item:String)
     func itemUnchecked(_ item:String)
 }
 
-class CurrentTasksViewController: UITableViewController, SettingsVCDelegate {
-    var items:[String] = []
+class FavoritesTableViewController: UITableViewController, PeopleVCDelegate {
+    var favorites:[String] = []
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (items.count == 0) {
+        if (favorites.count == 0) {
             return 1
         } else {
-            return items.count
+            return favorites.count
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCell(withIdentifier: "Task Cell")
+        var cell = self.tableView.dequeueReusableCell(withIdentifier: "Favorite Cell")
         
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Task Cell")
+            cell = UITableViewCell(style: .default, reuseIdentifier: "Favorite Cell")
         }
         
-        if items.count == 0 {
-            cell!.textLabel?.text = "You have no tasks right now"
+        if favorites.count == 0 {
+            cell!.textLabel?.text = "You Hate Everyone"
         } else {
-            cell!.textLabel?.text = self.items[indexPath.row]
+            cell!.textLabel?.text = self.favorites[indexPath.row]
         }
         
         return cell!
@@ -42,13 +42,13 @@ class CurrentTasksViewController: UITableViewController, SettingsVCDelegate {
     
     func itemChecked(_ item: String) {
         print("Checked Item: \(item)")
-        self.items.append(item)
+        self.favorites.append(item)
         self.tableView.reloadData()
     }
     
     func itemUnchecked(_ item: String) {
         print("Unchecked Item: \(item)")
-        self.items = self.items.filter({$0 != item})
+        self.favorites = self.favorites.filter({$0 != item})
         self.tableView.reloadData()
     }
 }

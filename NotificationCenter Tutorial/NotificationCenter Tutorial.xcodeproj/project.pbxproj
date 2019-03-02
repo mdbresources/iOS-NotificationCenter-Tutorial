@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1F2EEFB9222B03FC00ED2B50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFB8222B03FC00ED2B50 /* AppDelegate.swift */; };
-		1F2EEFBB222B03FC00ED2B50 /* CurrentTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFBA222B03FC00ED2B50 /* CurrentTasksViewController.swift */; };
-		1F2EEFBD222B03FC00ED2B50 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFBC222B03FC00ED2B50 /* SettingsViewController.swift */; };
+		1F2EEFBB222B03FC00ED2B50 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFBA222B03FC00ED2B50 /* FavoritesTableViewController.swift */; };
+		1F2EEFBD222B03FC00ED2B50 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFBC222B03FC00ED2B50 /* PeopleViewController.swift */; };
 		1F2EEFC0222B03FC00ED2B50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2EEFBE222B03FC00ED2B50 /* Main.storyboard */; };
 		1F2EEFC2222B03FE00ED2B50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F2EEFC1222B03FE00ED2B50 /* Assets.xcassets */; };
 		1F2EEFC5222B03FE00ED2B50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2EEFC3222B03FE00ED2B50 /* LaunchScreen.storyboard */; };
 		1F2EEFD0222B03FE00ED2B50 /* NotificationCenter_TutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFCF222B03FE00ED2B50 /* NotificationCenter_TutorialUITests.swift */; };
-		1F2EEFDB222B06A000ED2B50 /* SettingsVC-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFDA222B06A000ED2B50 /* SettingsVC-TableView.swift */; };
-		1F2EEFDD222B0DF400ED2B50 /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFDC222B0DF400ED2B50 /* ListItemTableViewCell.swift */; };
+		1F2EEFDB222B06A000ED2B50 /* PeopleVC-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFDA222B06A000ED2B50 /* PeopleVC-TableView.swift */; };
+		1F2EEFDD222B0DF400ED2B50 /* AddItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EEFDC222B0DF400ED2B50 /* AddItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +31,8 @@
 /* Begin PBXFileReference section */
 		1F2EEFB5222B03FC00ED2B50 /* NotificationCenter Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NotificationCenter Tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2EEFB8222B03FC00ED2B50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F2EEFBA222B03FC00ED2B50 /* CurrentTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTasksViewController.swift; sourceTree = "<group>"; };
-		1F2EEFBC222B03FC00ED2B50 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1F2EEFBA222B03FC00ED2B50 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		1F2EEFBC222B03FC00ED2B50 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		1F2EEFBF222B03FC00ED2B50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F2EEFC1222B03FE00ED2B50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F2EEFC4222B03FE00ED2B50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,8 +40,8 @@
 		1F2EEFCB222B03FE00ED2B50 /* NotificationCenter TutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NotificationCenter TutorialUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2EEFCF222B03FE00ED2B50 /* NotificationCenter_TutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter_TutorialUITests.swift; sourceTree = "<group>"; };
 		1F2EEFD1222B03FE00ED2B50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F2EEFDA222B06A000ED2B50 /* SettingsVC-TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC-TableView.swift"; sourceTree = "<group>"; };
-		1F2EEFDC222B0DF400ED2B50 /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
+		1F2EEFDA222B06A000ED2B50 /* PeopleVC-TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeopleVC-TableView.swift"; sourceTree = "<group>"; };
+		1F2EEFDC222B0DF400ED2B50 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,14 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				1F2EEFB8222B03FC00ED2B50 /* AppDelegate.swift */,
-				1F2EEFBA222B03FC00ED2B50 /* CurrentTasksViewController.swift */,
-				1F2EEFBC222B03FC00ED2B50 /* SettingsViewController.swift */,
-				1F2EEFDA222B06A000ED2B50 /* SettingsVC-TableView.swift */,
+				1F2EEFBA222B03FC00ED2B50 /* FavoritesTableViewController.swift */,
+				1F2EEFBC222B03FC00ED2B50 /* PeopleViewController.swift */,
+				1F2EEFDA222B06A000ED2B50 /* PeopleVC-TableView.swift */,
 				1F2EEFBE222B03FC00ED2B50 /* Main.storyboard */,
 				1F2EEFC1222B03FE00ED2B50 /* Assets.xcassets */,
 				1F2EEFC3222B03FE00ED2B50 /* LaunchScreen.storyboard */,
 				1F2EEFC6222B03FE00ED2B50 /* Info.plist */,
-				1F2EEFDC222B0DF400ED2B50 /* ListItemTableViewCell.swift */,
+				1F2EEFDC222B0DF400ED2B50 /* AddItemTableViewCell.swift */,
 			);
 			path = "NotificationCenter Tutorial";
 			sourceTree = "<group>";
@@ -206,11 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F2EEFDD222B0DF400ED2B50 /* ListItemTableViewCell.swift in Sources */,
-				1F2EEFBD222B03FC00ED2B50 /* SettingsViewController.swift in Sources */,
+				1F2EEFDD222B0DF400ED2B50 /* AddItemTableViewCell.swift in Sources */,
+				1F2EEFBD222B03FC00ED2B50 /* PeopleViewController.swift in Sources */,
 				1F2EEFB9222B03FC00ED2B50 /* AppDelegate.swift in Sources */,
-				1F2EEFBB222B03FC00ED2B50 /* CurrentTasksViewController.swift in Sources */,
-				1F2EEFDB222B06A000ED2B50 /* SettingsVC-TableView.swift in Sources */,
+				1F2EEFBB222B03FC00ED2B50 /* FavoritesTableViewController.swift in Sources */,
+				1F2EEFDB222B06A000ED2B50 /* PeopleVC-TableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

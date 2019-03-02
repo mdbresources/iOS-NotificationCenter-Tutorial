@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class PeopleViewController: UIViewController {
     
-    var settings:[String] = ["Stay logged in", "Audio Enabled", "Track My Location", "Send Anonymous Analytics", "Foo", "Bar", "Baz", "Biz", "Max", "Ajay", "Anmol", "Vidya"]
-    var selected:[Bool] = [false, false, false, false, false, false, false, false, false, false, false, false]
+    var people:[String] = ["Max", "Ajay", "Anmol", "Vidya", "Anita", "Sam", "Sinjon", "Andrew", "Neha", "Melanie", "Varun", "Aadhrik", "Candace", "Tyler"]
+    var selected:[Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
-    var delegate: SettingsVCDelegate?
+    var delegate: PeopleVCDelegate?
     
     var tableView: UITableView!
     
@@ -21,12 +21,13 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setUpTableView()
-        if let vc = self.tabBarController?.viewControllers?[0] as? SettingsVCDelegate {
+        if let vc = self.tabBarController?.viewControllers?[0] as? PeopleVCDelegate {
             print("Delegate Set")
             self.delegate = vc
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
@@ -37,7 +38,7 @@ class SettingsViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: "AddCell")
+        self.tableView.register(AddItemTableViewCell.self, forCellReuseIdentifier: "AddCell")
         
         self.view.addSubview(self.tableView)
         
@@ -60,12 +61,10 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func keyboardWillHide(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-            self.tableView.contentInset = contentInsets;
-            self.tableView.scrollIndicatorInsets = contentInsets;
-            self.tableView.scrollToNearestSelectedRow(at: .bottom, animated: true)
-        }
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        self.tableView.contentInset = contentInsets;
+        self.tableView.scrollIndicatorInsets = contentInsets;
+        self.tableView.scrollToNearestSelectedRow(at: .bottom, animated: true)
     }
 }
 

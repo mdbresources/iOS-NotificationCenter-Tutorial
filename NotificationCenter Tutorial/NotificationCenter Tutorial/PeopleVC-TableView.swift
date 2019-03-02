@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AddCellOwner {
+extension PeopleViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AddCellOwner {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.settings.count + 1
+        return self.people.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == self.settings.count {
+        if indexPath.row == self.people.count {
             return self.getAddCell()
         } else {
             return self.normalCellAt(indexPath)
@@ -23,7 +23,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == self.settings.count {
+        if indexPath.row == self.people.count {
             return
         }
         
@@ -31,18 +31,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource, UI
         
         if self.selected[indexPath.row] {
             self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            self.delegate?.itemChecked(self.settings[indexPath.row])
+            self.delegate?.itemChecked(self.people[indexPath.row])
         } else {
             self.tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            self.delegate?.itemUnchecked(self.settings[indexPath.row])
+            self.delegate?.itemUnchecked(self.people[indexPath.row])
         }
     }
     
     private func getAddCell() -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCell(withIdentifier: "AddCell") as? ListItemTableViewCell
+        var cell = self.tableView.dequeueReusableCell(withIdentifier: "AddCell") as? AddItemTableViewCell
         
         if cell == nil {
-            cell = ListItemTableViewCell()
+            cell = AddItemTableViewCell()
         }
         
         cell?.awakeFromNib()
@@ -53,14 +53,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource, UI
     }
     
     private func normalCellAt(_ indexPath: IndexPath) -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCell(withIdentifier: "Settings Cell")
+        var cell = self.tableView.dequeueReusableCell(withIdentifier: "Person Cell")
         
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Settings Cell")
+            cell = UITableViewCell(style: .default, reuseIdentifier: "Person Cell")
         }
         
-        cell!.textLabel?.text = self.settings[indexPath.row]
-        cell!.accessoryType = (self.selected[indexPath.row]) ? .checkmark : .none
+        cell?.textLabel?.text = self.people[indexPath.row]
+        cell?.accessoryType = (self.selected[indexPath.row]) ? .checkmark : .none
+        cell?.selectionStyle = .none
         
         return cell!
     }
@@ -71,7 +72,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func addItem(_ item: String) {
-        self.settings.append(item)
+        self.people.append(item)
         self.selected.append(false)
         self.tableView.reloadData()
     }
