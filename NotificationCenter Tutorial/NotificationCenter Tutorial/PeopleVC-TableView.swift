@@ -39,13 +39,8 @@ extension PeopleViewController: UITableViewDelegate, UITableViewDataSource, UITe
     }
     
     private func getAddCell() -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCell(withIdentifier: "AddCell") as? AddItemTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "AddCell") as? AddItemTableViewCell
         
-        if cell == nil {
-            cell = AddItemTableViewCell()
-        }
-        
-        cell?.awakeFromNib()
         cell?.cellField?.delegate = self
         cell?.owner = self
         

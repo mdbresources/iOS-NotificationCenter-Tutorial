@@ -17,30 +17,30 @@ class AddItemTableViewCell: UITableViewCell {
     var addButton: UIButton?
     var owner: AddCellOwner?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        if cellField == nil {
-            cellField = UITextField(frame: CGRect(x: 10, y: 5, width: self.contentView.frame.width - 50, height: self.contentView.frame.height - 10))
-            cellField!.borderStyle = .bezel
-            self.contentView.addSubview(cellField!)
-        }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        if addButton == nil {
-            addButton = UIButton(type: .contactAdd)
-            addButton!.frame = CGRect(x: self.contentView.frame.width - 40, y: 5, width: 30, height: 30)
-            addButton!.addTarget(self, action: #selector(addItem), for: .touchUpInside)
-            self.contentView.addSubview(addButton!)
-        }
+        cellField = UITextField(frame: CGRect(x: 10, y: 5, width: self.contentView.frame.width - 50, height: self.contentView.frame.height - 10))
+        cellField!.borderStyle = .bezel
+        self.contentView.addSubview(cellField!)
+        
+        addButton = UIButton(type: .contactAdd)
+        addButton!.frame = CGRect(x: self.contentView.frame.width - 40, y: 5, width: 30, height: 30)
+        addButton!.addTarget(self, action: #selector(addItem), for: .touchUpInside)
+        self.contentView.addSubview(addButton!)
         
         self.selectionStyle = .none
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     @objc func addItem() {
         if let text = self.cellField?.text, text != "" {
             self.owner?.addItem(text)
             self.cellField?.text = ""
-            self.cellField?.resignFirstResponder()
         }
+        self.cellField?.resignFirstResponder()
     }
 }
