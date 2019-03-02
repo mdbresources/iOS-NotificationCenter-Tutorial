@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesTableViewController: UITableViewController, PeopleVCDelegate {
     var favorites:[String] = []
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (favorites.count == 0) {
             return 1
@@ -27,9 +27,11 @@ class FavoritesTableViewController: UITableViewController, PeopleVCDelegate {
         }
         
         if favorites.count == 0 {
-            cell!.textLabel?.text = "You Hate Everyone"
+            cell?.textLabel?.text = "You Hate Everyone"
+            cell?.textLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         } else {
-            cell!.textLabel?.text = self.favorites[indexPath.row]
+            cell?.textLabel?.font = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .regular)
+            cell?.textLabel?.text = self.favorites[indexPath.row]
         }
         
         return cell!
