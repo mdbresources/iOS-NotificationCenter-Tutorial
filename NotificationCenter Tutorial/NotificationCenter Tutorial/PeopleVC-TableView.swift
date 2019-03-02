@@ -31,10 +31,10 @@ extension PeopleViewController {
         
         if self.selected[indexPath.row] {
             self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            self.delegate?.itemChecked(self.people[indexPath.row])
+            //Call the delegate method
         } else {
             self.tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            self.delegate?.itemUnchecked(self.people[indexPath.row])
+            //Call the delegate method
         }
     }
     
@@ -45,8 +45,7 @@ extension PeopleViewController {
             cell = AddItemTableViewCell(style: .default, reuseIdentifier: "AddCell")
         }
         
-        cell?.cellField?.delegate = self
-        cell?.owner = self
+        //Set appropriate delegates
         
         return cell!
     }

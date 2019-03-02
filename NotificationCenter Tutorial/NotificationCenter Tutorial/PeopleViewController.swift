@@ -8,27 +8,22 @@
 
 import UIKit
 
-protocol PeopleVCDelegate {
-    func itemChecked(_ item:String)
-    func itemUnchecked(_ item:String)
-}
+//Create delegate for PeopleViewController
 
-class PeopleViewController: UITableViewController, UITextFieldDelegate, AddCellOwner {
+class PeopleViewController: UITableViewController, UITextFieldDelegate {
     
     var people:[String] = ["Max", "Ajay", "Anmol", "Vidya", "Anita", "Sam", "Sinjon", "Andrew", "Neha", "Melanie", "Varun", "Aadhrik", "Candace", "Tyler"]
     var selected:[Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
-    var delegate: PeopleVCDelegate?
+    //Create delegate instance variable
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.delegate = self.tabBarController?.viewControllers?[0] as? PeopleVCDelegate
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //Set delegate
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+        //Observe Notifications (use the provided keyboardWillShow and keyboardWillHide notifications
     }
     
     @objc func keyboardWillShow(notification: Notification) {
@@ -54,9 +49,5 @@ class PeopleViewController: UITableViewController, UITextFieldDelegate, AddCellO
         return true
     }
     
-    func addItem(_ item: String) {
-        self.people.append(item)
-        self.selected.append(false)
-        self.tableView.reloadData()
-    }
+    //Implement delegate methods
 }

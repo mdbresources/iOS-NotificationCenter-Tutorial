@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesTableViewController: UITableViewController, PeopleVCDelegate {
+class FavoritesTableViewController: UITableViewController {
     var favorites:[String] = []
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,16 +37,6 @@ class FavoritesTableViewController: UITableViewController, PeopleVCDelegate {
         return cell!
     }
     
-    func itemChecked(_ item: String) {
-        print("Checked Item: \(item)")
-        self.favorites.append(item)
-        self.tableView.reloadData()
-    }
-    
-    func itemUnchecked(_ item: String) {
-        print("Unchecked Item: \(item)")
-        self.favorites = self.favorites.filter({$0 != item})
-        self.tableView.reloadData()
-    }
+    //Implement delegate methods
 }
 

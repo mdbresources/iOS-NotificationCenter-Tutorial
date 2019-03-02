@@ -8,14 +8,12 @@
 
 import UIKit
 
-protocol AddCellOwner {
-    func addItem(_ item:String)
-}
+//Create AddCellOwner protocol
 
 class AddItemTableViewCell: UITableViewCell {
     var cellField: UITextField?
     var addButton: UIButton?
-    var owner: AddCellOwner?
+    //Create the delegate instance variable
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,7 +36,8 @@ class AddItemTableViewCell: UITableViewCell {
     
     @objc func addItem() {
         if let text = self.cellField?.text, text != "" {
-            self.owner?.addItem(text)
+            //Call the delegate method
+
             self.cellField?.text = ""
         }
         self.cellField?.resignFirstResponder()
