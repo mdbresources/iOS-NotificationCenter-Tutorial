@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-extension PeopleViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AddCellOwner {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension PeopleViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.people.count + 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == self.people.count {
             return self.getAddCell()
         } else {
@@ -22,7 +22,7 @@ extension PeopleViewController: UITableViewDelegate, UITableViewDataSource, UITe
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == self.people.count {
             return
         }
@@ -39,7 +39,11 @@ extension PeopleViewController: UITableViewDelegate, UITableViewDataSource, UITe
     }
     
     private func getAddCell() -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "AddCell") as? AddItemTableViewCell
+        var cell = self.tableView.dequeueReusableCell(withIdentifier: "AddCell") as? AddItemTableViewCell
+        
+        if cell == nil {
+            cell = AddItemTableViewCell(style: .default, reuseIdentifier: "AddCell")
+        }
         
         cell?.cellField?.delegate = self
         cell?.owner = self
@@ -59,17 +63,6 @@ extension PeopleViewController: UITableViewDelegate, UITableViewDataSource, UITe
         cell?.selectionStyle = .none
         
         return cell!
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func addItem(_ item: String) {
-        self.people.append(item)
-        self.selected.append(false)
-        self.tableView.reloadData()
     }
 }
 

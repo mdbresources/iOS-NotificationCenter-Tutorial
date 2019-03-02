@@ -8,44 +8,27 @@
 
 import UIKit
 
-class PeopleViewController: UIViewController {
+protocol PeopleVCDelegate {
+    func itemChecked(_ item:String)
+    func itemUnchecked(_ item:String)
+}
+
+class PeopleViewController: UITableViewController, UITextFieldDelegate, AddCellOwner {
     
     var people:[String] = ["Max", "Ajay", "Anmol", "Vidya", "Anita", "Sam", "Sinjon", "Andrew", "Neha", "Melanie", "Varun", "Aadhrik", "Candace", "Tyler"]
     var selected:[Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     var delegate: PeopleVCDelegate?
     
-    var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        setUpTableView()
-        if let vc = self.tabBarController?.viewControllers?[0] as? PeopleVCDelegate {
-            print("Delegate Set")
-            self.delegate = vc
-        }
+        self.delegate = self.tabBarController?.viewControllers?[0] as? PeopleVCDelegate
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-    }
-    
-    func setUpTableView() {
-        self.tableView = UITableView()
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        self.tableView.register(AddItemTableViewCell.self, forCellReuseIdentifier: "AddCell")
-        
-        self.view.addSubview(self.tableView)
-        
-        self.tableView.topAnchor.constraint(equalTo: self.safeArea.topAnchor, constant: 10).isActive = true
-        self.tableView.leadingAnchor.constraint(equalTo: self.safeArea.leadingAnchor, constant: 10).isActive = true
-        self.safeArea.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor, constant: 10).isActive = true
-        self.safeArea.bottomAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 10).isActive = true
     }
     
     @objc func keyboardWillShow(notification: Notification) {
@@ -57,7 +40,6 @@ class PeopleViewController: UIViewController {
             self.tableView.scrollIndicatorInsets = contentInsets;
             self.tableView.scrollToNearestSelectedRow(at: .bottom, animated: true)
         }
-        
     }
     
     @objc func keyboardWillHide(notification: Notification) {
@@ -66,11 +48,15 @@ class PeopleViewController: UIViewController {
         self.tableView.scrollIndicatorInsets = contentInsets;
         self.tableView.scrollToNearestSelectedRow(at: .bottom, animated: true)
     }
-}
-
-extension UIViewController {
-    var safeArea: UILayoutGuide {
-        return self.view.safeAreaLayoutGuide
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func addItem(_ item: String) {
+        self.people.append(item)
+        self.selected.append(false)
+        self.tableView.reloadData()
     }
 }
-

@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol PeopleVCDelegate {
-    func itemChecked(_ item:String)
-    func itemUnchecked(_ item:String)
-}
-
 class FavoritesTableViewController: UITableViewController, PeopleVCDelegate {
     var favorites:[String] = []
     
